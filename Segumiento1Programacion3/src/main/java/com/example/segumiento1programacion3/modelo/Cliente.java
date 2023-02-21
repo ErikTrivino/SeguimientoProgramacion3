@@ -7,13 +7,23 @@ public class Cliente {
     private String cedula;
     private String direccion;
     private String email;
+    private  Cuenta cuenta;
 
-    public Cliente(String nombre, String apellidos, String cedula, String direccion, String email) {
+    public Cliente(String nombre, String apellidos, String cedula, String direccion, String email, Cuenta cuenta) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.cedula = cedula;
         this.direccion = direccion;
         this.email = email;
+        this.cuenta = cuenta;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     public String getNombre() {

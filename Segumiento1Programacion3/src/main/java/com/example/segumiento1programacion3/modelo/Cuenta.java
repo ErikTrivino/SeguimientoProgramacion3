@@ -6,7 +6,7 @@ public class Cuenta {
 
     public Cuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
-        this.Saldo = 0.0;
+        this.Saldo = 50.0;
 
     }
 
@@ -19,7 +19,14 @@ public class Cuenta {
 
 
 
-   /* public void agregarSaldo(Double saldo) {
-        this.Saldo += saldo;
-    }*/
+    public void agregarSaldo(Double valor){
+        this.Saldo += valor;
+    }
+    public void retirarSaldo(Double valor){
+        this.Saldo -= valor;
+    }
+
+
+
+
 }
