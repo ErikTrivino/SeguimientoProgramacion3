@@ -5,12 +5,13 @@ import com.example.segumiento1programacion3.modelo.Empleado;
 import com.example.segumiento1programacion3.modelo.EstadoTransaccion;
 import com.example.segumiento1programacion3.modelo.Transaccion;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class SolicitudSaldo extends Transaccion {
 
-    public SolicitudSaldo(Double registroValor, Date hora, Date fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, String numCuenta) {
-        super(registroValor, hora, fecha, estadoTransaccion, empleado, numCuenta);
+    public SolicitudSaldo( LocalTime hora, LocalDate fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, String numCuenta) {
+        super( hora, fecha, estadoTransaccion, empleado, numCuenta);
     }
 
     public String mostrarSaldo(Cuenta cuenta){
