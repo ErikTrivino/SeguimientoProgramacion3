@@ -45,12 +45,16 @@ public class LoginController {
 
                 stage.setResizable(false);
                 stage.centerOnScreen();
+                limpiarCampos();
                 stage.show();
+
+
 
             }
 
         }catch (ErrorValor e){
             mostrarMensaje(e.getMessage());
+            limpiarCampos();
         }
 
 
@@ -63,5 +67,9 @@ public class LoginController {
         alert.setTitle("Error");
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+    public void limpiarCampos(){
+        numeroIdentificacion.setText("");
+        numeroCuenta.setText("");
     }
 }

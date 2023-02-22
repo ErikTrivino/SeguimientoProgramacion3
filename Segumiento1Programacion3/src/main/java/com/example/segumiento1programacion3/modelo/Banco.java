@@ -105,12 +105,22 @@ public class Banco {
 
     public boolean verificarCuenta(String numeroIndentificacion, String numCuenta) throws ErrorValor {
         boolean res = true;
+        Optional<Cliente> cliente1 = listaClientes.stream().filter(cliente -> cliente.getCedula().equals(numeroIndentificacion))
+                .findFirst();
 
-        if(!listaClientes.stream()
-                .filter(cliente -> cliente.getCedula().equals(numeroIndentificacion))
-                .findFirst().get().getCuenta().getNumeroCuenta().equals(numCuenta)){
+        if (cliente1.isPresent()){
+            if(!cliente1.get().getCuenta().getNumeroCuenta().equals(numCuenta)){
+                throw new ErrorValor();
+            }
+
+
+        }else{
             throw new ErrorValor();
         }
+
+
+
+
 
         return  res;
     }
