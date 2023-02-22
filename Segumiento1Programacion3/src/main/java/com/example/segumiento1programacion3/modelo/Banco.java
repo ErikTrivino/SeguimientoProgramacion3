@@ -167,8 +167,7 @@ public class Banco {
     public void mostrarSaldo( LocalTime hora, LocalDate fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, Cuenta cuenta){
 
         SolicitudSaldo solicitudSaldo = new SolicitudSaldo(hora, fecha, estadoTransaccion, empleado, cuenta.getNumeroCuenta() );
-        System.out.println(solicitudSaldo.toString());
-        System.out.println(fecha);
+        
         listaTransaccion.add(solicitudSaldo);
     }
 
