@@ -10,7 +10,9 @@ import com.example.segumiento1programacion3.modelo.tiposTransaccion.SolicitudSal
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Banco {
 
@@ -167,12 +169,22 @@ public class Banco {
     public void mostrarSaldo( LocalTime hora, LocalDate fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, Cuenta cuenta){
 
         SolicitudSaldo solicitudSaldo = new SolicitudSaldo(hora, fecha, estadoTransaccion, empleado, cuenta.getNumeroCuenta() );
-        
+
         listaTransaccion.add(solicitudSaldo);
     }
 
+    public ArrayList<Transaccion> buscarTransaccionPorFecha(Cuenta cuenta) {
+
+        return (ArrayList<Transaccion>) listaTransaccion.stream()
+                .filter(x -> x.getNumCuenta().equals(cuenta.getNumeroCuenta()))
+                //.filter(x -> x.getFecha().isAfter(dateIncio))
+                //.filter(x -> x.getFecha().isBefore(dateFinal))
+                .sorted(Comparator.comparing(Transaccion::getFecha))
+                // .map(venta -> (Venta) venta)
+                .collect(Collectors.toList());
 
 
+    }
 
 
 

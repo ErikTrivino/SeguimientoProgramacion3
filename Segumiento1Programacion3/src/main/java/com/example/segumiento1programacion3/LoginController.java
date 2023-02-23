@@ -10,12 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 
 public class LoginController {
+    public ImageView imagenLogin;
     @FXML
     private TextField numeroIdentificacion;
     @FXML
@@ -24,6 +26,11 @@ public class LoginController {
 
 
 
+    @FXML
+    public void initialize() {
+        //Image image1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("UNIBANCO.png")));
+        //imagenLogin.setImage(image1);
+    }
 
 
     @FXML
