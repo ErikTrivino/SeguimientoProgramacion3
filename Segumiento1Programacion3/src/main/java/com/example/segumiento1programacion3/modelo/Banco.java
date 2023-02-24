@@ -2,6 +2,7 @@ package com.example.segumiento1programacion3.modelo;
 
 import com.example.segumiento1programacion3.exceptions.ErrorRetiro;
 import com.example.segumiento1programacion3.exceptions.ErrorValor;
+import com.example.segumiento1programacion3.modelo.tiposCuenta.CuentaAhorro;
 import com.example.segumiento1programacion3.modelo.tiposCuenta.CuentaCorriente;
 import com.example.segumiento1programacion3.modelo.tiposTransaccion.DepositoDinero;
 import com.example.segumiento1programacion3.modelo.tiposTransaccion.RetiroDinero;
@@ -32,11 +33,16 @@ public class Banco {
         this.listaEmpleado = new ArrayList<>();
 
 
-        Cuenta cuenta = new CuentaCorriente("1234", 5.0);
-        Empleado empleado = new Empleado("Diego", "a", "148392", "bosques", "diegox@gmail", "43211", "kakaroto");
-        listaClientes.add(new Cliente("Erik", "Tri", "1234", "carrera19", "e@gmail.com", cuenta ));
-        listaCuentas.add(cuenta);
-        listaEmpleado.add(empleado);
+        Cuenta cuenta1 = new CuentaCorriente("1234", 5.0);
+        Cuenta cuenta2 = new CuentaAhorro("4321");
+        Empleado empleado1 = new Empleado("Diego", "a", "148392", "bosques", "diegox@gmail", "43211", "kakaroto");
+        Empleado empleado2 = new Empleado("kevin", "Payanene", "148392", "bosques", "diegox@gmail", "43211", "contraseña");
+        listaClientes.add(new Cliente("Erik", "Tri", "1234", "carrera19", "e@gmail.com", cuenta1));
+        listaClientes.add(new Cliente("Ana", "Gonzalez", "4321", "carrera19", "e@gmail.com", cuenta2));
+        listaCuentas.add(cuenta1);
+        listaCuentas.add(cuenta2);
+        listaEmpleado.add(empleado1);
+        listaEmpleado.add(empleado2);
     }
 
 
@@ -72,9 +78,7 @@ public class Banco {
         this.listaEmpleado = listaEmpleado;
     }
 
-    public void crearTransaccion(Double valorRetiro, Cuenta cuentaOperacion, Transaccion tipoTransaccion){
 
-    }
 
 
     public Optional<Cliente> buscarClienteByNumeroIdentificacion(String numeriIdentificacion) {
@@ -91,19 +95,7 @@ public class Banco {
                 .filter(x -> x.getNumeroCuenta().equals(numCuenta))
                 .findFirst().get();
     }
-    /*public Cuenta verificarCuenta(String numeroIndentificacion, String numCuenta) throws ErrorValor {
 
-
-        if(!listaClientes.stream()
-                .filter(cliente -> cliente.getCedula().equals(numeroIndentificacion))
-                .findFirst().get().getCuenta().getNumeroCuenta().equals(numCuenta)){
-            throw new ErrorValor();
-        }
-
-        return listaClientes.stream()
-                .filter(cliente -> cliente.getCedula().equals(numeroIndentificacion))
-                .findFirst().get().getCuenta();
-    }*/
 
     public boolean verificarCuenta(String numeroIndentificacion, String numCuenta) throws ErrorValor {
         boolean res = true;
@@ -130,15 +122,7 @@ public class Banco {
     /**METODOS TRANSACCION**/
 
 
-    public void depositarDinero(Double registroValor, LocalTime hora, LocalDate fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, String numCuenta, Double valorDepositado){
-        listaCuentas.stream()
-                .filter(cuenta -> cuenta.getNumeroCuenta().equals(numCuenta))
-                .findFirst().get().agregarSaldo(valorDepositado);
-        DepositoDinero depositoDinero = new DepositoDinero(registroValor, hora, fecha, estadoTransaccion, empleado, numCuenta, valorDepositado);
 
-        listaTransaccion.add(depositoDinero);
-
-    }
 
     public void depositarDineroV2(Double registroValor, LocalTime hora, LocalDate fecha, EstadoTransaccion estadoTransaccion, Empleado empleado, Cuenta cuenta, Double valorDepositado){
         DepositoDinero depositoDinero = new DepositoDinero(valorDepositado, hora, fecha, estadoTransaccion, empleado, cuenta.getNumeroCuenta(), valorDepositado);
@@ -173,18 +157,7 @@ public class Banco {
         listaTransaccion.add(solicitudSaldo);
     }
 
-    public ArrayList<Transaccion> buscarTransaccionPorFecha(Cuenta cuenta) {
 
-        return (ArrayList<Transaccion>) listaTransaccion.stream()
-                .filter(x -> x.getNumCuenta().equals(cuenta.getNumeroCuenta()))
-                //.filter(x -> x.getFecha().isAfter(dateIncio))
-                //.filter(x -> x.getFecha().isBefore(dateFinal))
-                .sorted(Comparator.comparing(Transaccion::getFecha))
-                // .map(venta -> (Venta) venta)
-                .collect(Collectors.toList());
-
-
-    }
 
 
 

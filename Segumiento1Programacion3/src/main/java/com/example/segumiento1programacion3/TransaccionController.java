@@ -45,9 +45,9 @@ public class TransaccionController {
     public void init(String numCuenta, Stage stage, LoginController loginController) {
 
         this.cuenta = AppController.INSTANCE.getBanco().buscarCuentaByNumeroIdentificacion(numCuenta);
-        txtNumcuenta.setText("Numero de la cuenta "+ numCuenta);
-        txtNumcuenta1.setText("Numero de la cuenta "+ numCuenta);
-        txtNumcuenta2.setText("Numero de la cuenta "+ numCuenta);
+        txtNumcuenta.setText("NUMERO DE CUENTA ES: "+ numCuenta);
+        txtNumcuenta1.setText("NUMERO DE CUENTA ES: "+ numCuenta);
+        txtNumcuenta2.setText("NUMERO DE CUENTA ES: "+ numCuenta);
 
         this.empleado = AppController.INSTANCE.getBanco().getListaEmpleado().get(0);
     }

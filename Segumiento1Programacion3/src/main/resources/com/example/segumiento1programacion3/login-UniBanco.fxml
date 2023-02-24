@@ -33,7 +33,7 @@
             <ImageView  fx:id="imagenLogin" fitHeight="200.0" fitWidth="200.0" layoutX="311.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                 <image>
 
-                    <!--<Image url="UNIBANCO.png"/>-->
+                    <Image url="@UNIBANCO.png"/>
                 </image>
             </ImageView>
         </children>
